@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/Users/mr.tariqdevops/Desktop/reactWebsite # This is the directory where your code is located
+    docker:
+      - image: circleci/node:14 # This is the version of Node.js to use
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build # This command will build your React frontend
+      - run: npm test # This command will run your tests
+      - run: npm run coverage # This command will run your code coverage
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
