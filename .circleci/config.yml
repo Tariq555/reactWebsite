@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   build:
-    working_directory: Users/mr.tariqdevops/Desktop/reactWebsite # This is the directory where your code is located
+    working_directory: ~/reactWebsite # This is the directory where your code is located
     docker:
       - image: circleci/node:14 # This is the version of Node.js to use
     steps:
