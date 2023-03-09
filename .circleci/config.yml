@@ -9,21 +9,21 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - yarn-{{ checksum "yarn.lock" }}
-            - yarn-
+            - npm-{{ checksum "package-lock.json" }}
+            - npm-
       - run:
           name: Install dependencies
-          command: yarn install --frozen-lockfile
+          command: npm ci
       - save_cache:
           paths:
             - node_modules
-          key: yarn-{{ checksum "yarn.lock" }}
+          key: npm-{{ checksum "package-lock.json" }}
       - run:
           name: Build app
-          command: yarn build
+          command: npm run build
       - run:
           name: Test app
-          command: yarn test
+          command: npm run test
       - store_artifacts:
           path: ~/app/build
           destination: builds
@@ -38,10 +38,10 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: yarn install --frozen-lockfile
+          command: npm ci
       - run:
           name: Build app
-          command: yarn build
+          command: npm run build
 
 workflows:
   build-and-deploy:
