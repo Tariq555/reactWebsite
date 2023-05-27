@@ -35,10 +35,15 @@
 }
 
 .sign-up {
+  position: relative;
   background-image: url('/Users/mr.tariqdevops/Desktop/reactWebsite/build/images/img-8.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  font-size: 100px;
+  
+  font-size: 20px;
 }
+
+
+
