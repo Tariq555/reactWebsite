@@ -65,7 +65,7 @@ function Footer() {
           <div class='footer-logo'>
             
           </div>
-          <small class='website-rights'> © 2023</small>
+          <small class='website-rights'> Tariq©2023</small>
           <div class='social-icons'>
             <Link
               class='social-icon-link facebook'
