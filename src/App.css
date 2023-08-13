@@ -17,7 +17,7 @@
 }
 
 .services {
-  background-image: url('/Users/mr.tariqdevops/Desktop/reactWebsite/public/images/img-2.jpg');
+  background-image: url('/public/images/img-2.jpg'); /* Update this path */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,9 +26,9 @@
 }
 
 .products {
-  background-image: url('/Users/mr.tariqdevops/Desktop/reactWebsite/public/images/img-1.jpg');
+  background-image: url('/public/images/img-1.jpg'); /* Update this path */
   background-position: center;
-  background-size: fill;
+  background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
@@ -36,14 +36,10 @@
 
 .sign-up {
   position: relative;
-  background-image: url('/Users/mr.tariqdevops/Desktop/reactWebsite/public/images/img-8.jpg');
+  background-image: url('/public/images/img-8.jpg'); /* Update this path */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  
   font-size: 20px;
 }
-
-
-
