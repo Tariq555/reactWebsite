@@ -34,12 +34,3 @@
   font-size: 100px;
 }
 
-.sign-up {
-  position: relative;
-  background-image: url('/public/images/img-8.jpg'); /* Update this path */
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 20px;
-}

@@ -1,46 +1,39 @@
 import React, { useState } from 'react';
-import '../../App.css';
+import axios from 'axios';
 
-export default function SignUp() {
-  // Define state variables for form inputs
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Signup = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
-  // Define an event handler to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Send form data to server using fetch()
-    fetch('/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password })
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Signup successful');
-        } else {
-          console.error('Error signing up');
-        }
-      })
-      .catch((error) => console.error(error));
+  const handleSignup = async () => {
+    try {
+      const response = await axios.post('/api/signup', {
+        firstName,
+        lastName,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className='sign-up'>
-      <h1>Sign Up</h1>
-
-      <label htmlFor='name'>Name:</label>
-      <input type='text' id='name' name='name' value={name} onChange={(e) => setName(e.target.value)} required />
-
-      <label htmlFor='email'>Email:</label>
-      <input type='email' id='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-
-      <label htmlFor='password'>Password:</label>
-      <input type='password' id='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-
-      <button type='submit'>Submit</button>
-    </form>
+    <div>
+      <input
+        type="text"
+        placeholder="First Name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+      />
+      <button onClick={handleSignup}>Sign Up</button>
+    </div>
   );
-}
+};
+
+export default Signup;
