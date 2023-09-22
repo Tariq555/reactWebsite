@@ -1,37 +1,24 @@
-// backend/server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
+const fs = require('fs');
+const cors = require('cors'); // Import the cors middleware
 
 const app = express();
-const PORT = 5000; // You can use any port you prefer
+const port = 3001; // Choose a port for your backend
 
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-const url = 'mongodb://localhost:27017';
-const dbName = 'mydatabase';
-MongoClient.connect(url, (err, client) => {
-  if (err) throw err;
-  const db = client.db(dbName);
-  const collection = db.collection('users');
+// Enable CORS for all routes
+app.use(cors());
 
-  // Endpoint for signup
-  app.post('/api/signup', (req, res) => {
-    const { firstName, lastName } = req.body;
+app.post('/api/signup', (req, res) => {
+  const { firstName, lastName } = req.body;
+  // Save user data to a file (e.g., users.json)
+  const userData = { firstName, lastName };
+  fs.appendFileSync('users.json', JSON.stringify(userData) + '\n');
+  res.status(200).json({ message: 'User data saved successfully.' });
+});
 
-    // Insert user data into the database
-    collection.insertOne({ firstName, lastName }, (err, result) => {
-      if (err) {
-        res.status(500).json({ error: 'Failed to insert data' });
-        return;
-      }
-      res.json({ message: 'Signup successful' });
-    });
-  });
-
-  // Start the server
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
