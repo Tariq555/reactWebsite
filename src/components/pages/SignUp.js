@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SignUp.css';
+// import './Button.css';
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -18,7 +20,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <input
         type="text"
         placeholder="First Name"
